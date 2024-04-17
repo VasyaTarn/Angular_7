@@ -1,0 +1,65 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        
+        <div formGroupName="userData">
+            <h2>Your data</h2>
+
+            <div class="form-group">
+                <label>Name</label>
+                <br>
+                <input type="text" class="form-control" formControlName="name">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <br>
+                <input type="email" class="form-control" formControlName="email">
+            </div>
+            <div class="form-group">
+                <label>Phone number</label>
+                <br>
+                <input type="text" class="form-control" formControlName="pNumber">
+            </div>
+        </div>
+
+        @if(form.get('userData')?.valid) 
+        {
+            <div formGroupName="delivery">
+                <h2>Delivery</h2>
+    
+                <div class="form-group">
+                    <label>Country</label>
+                    <br>
+                    <input type="text" class="form-control" formControlName="country">
+                </div>
+                <div class="form-group">
+                    <label>City</label>
+                    <br>
+                    <input type="text" class="form-control" formControlName="city">
+                </div>
+                <div class="form-group">
+                    <label>Postcode</label>
+                    <br>
+                    <input type="text" class="form-control" formControlName="postcode">
+                </div>
+            </div>
+        }
+
+        @if(form.get('userData')?.valid && form.get('delivery')?.valid) 
+        {
+            <div formGroupName="payment">
+                <h2>Payment</h2>
+    
+                <div class="form-group">
+                    <label>Bankcard number</label>
+                    <br>
+                    <input type="text" class="form-control" formControlName="cardNumber">
+                </div>
+            </div>
+        }
+
+
+
+
+        <button class="btn btn-success" type="submit" [disabled]="form.invalid">Сохранить</button>
+    </form>
+</div>
